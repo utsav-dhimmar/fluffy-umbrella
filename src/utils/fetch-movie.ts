@@ -10,8 +10,7 @@ export async function searchTMDB(
 	const API_KEY = getEnvVar("TMDB_API_KEY");
 
 	if (!API_KEY) {
-		console.warn("TMDB_API_KEY is missing");
-		return [];
+		throw new Error("TMDB_API_KEY is missing");
 	}
 
 	const results: CatalogItem[] = [];
