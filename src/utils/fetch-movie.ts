@@ -1,13 +1,13 @@
 import axios from "axios";
 import type { CatalogItem, MediaKind } from "../data/catalog";
 import type { SearchMode } from "../types";
-
+import { getEnvVar } from "./env";
 export async function searchTMDB(
 	query: string,
 	mode: SearchMode,
 	signal?: AbortSignal,
 ): Promise<CatalogItem[]> {
-	const API_KEY = import.meta.env.TMDB_API_KEY;
+	const API_KEY = getEnvVar("TMDB_API_KEY");
 
 	if (!API_KEY) {
 		console.warn("TMDB_API_KEY is missing");
