@@ -1,0 +1,26 @@
+---
+import { CinemaDeck } from "../components/CinemaDeck";
+import "../styles/global.css";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta
+      name="description"
+      content="TV-first VidLink player built with Astro, React, and Tailwind for lightweight playback on slower machines."
+    />
+    <title>Living Room Signal</title>
+  </head>
+  <body>
+    <div class="page-shell">
+      <div class="page-glow page-glow-left"></div>
+      <div class="page-glow page-glow-right"></div>
+      <CinemaDeck client:idle />
+    </div>
+  </body>
+</html>
