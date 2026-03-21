@@ -10,6 +10,3 @@ binding = "ASSETS"
 
 [observability]
 enabled = true
-
-[vars]
-TMDB_API_KEY = ""

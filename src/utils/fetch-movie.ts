@@ -6,8 +6,9 @@ export async function searchTMDB(
 	query: string,
 	mode: SearchMode,
 	signal?: AbortSignal,
+	env?: any,
 ): Promise<CatalogItem[]> {
-	const API_KEY = getEnvVar("TMDB_API_KEY");
+	const API_KEY = getEnvVar("TMDB_API_KEY", env);
 
 	if (!API_KEY) {
 		throw new Error("TMDB_API_KEY is missing");
@@ -101,6 +102,6 @@ export async function searchTMDB(
 }
 
 // Keep fetchMovies for backward compatibility if needed, but update it to use searchTMDB
-export async function fetchMovies(query: string = "batman") {
-	return searchTMDB(query, "movie");
+export async function fetchMovies(query: string = "batman", env?: any) {
+	return searchTMDB(query, "movie", undefined, env);
 }

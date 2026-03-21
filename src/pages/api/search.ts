@@ -4,9 +4,11 @@ import { searchTMDB } from "../../utils/fetch-movie";
 
 export const prerender = false;
 
-export const GET: APIRoute = async ({ url }) => {
+export const GET: APIRoute = async (context) => {
+	const { url, locals } = context;
 	const query = url.searchParams.get("query");
 	const mode = (url.searchParams.get("mode") as SearchMode) || "all";
+	const env = (locals as any).runtime?.env;
 
 	if (!query) {
 		return new Response(JSON.stringify([]), {
@@ -16,7 +18,7 @@ export const GET: APIRoute = async ({ url }) => {
 	}
 
 	try {
-		const results = await searchTMDB(query, mode);
+		const results = await searchTMDB(query, mode, undefined, env);
 		return new Response(JSON.stringify(results), {
 			status: 200,
 			headers: {
