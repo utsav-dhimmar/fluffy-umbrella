@@ -8,7 +8,7 @@ export async function searchTMDB(
 	signal?: AbortSignal,
 	env?: any,
 ): Promise<CatalogItem[]> {
-	const API_KEY = getEnvVar("TMDB_API_KEY", env);
+	const API_KEY = await getEnvVar("TMDB_API_KEY", env);
 
 	if (!API_KEY) {
 		throw new Error("TMDB_API_KEY is missing");
