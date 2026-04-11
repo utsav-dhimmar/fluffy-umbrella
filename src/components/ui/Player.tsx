@@ -98,15 +98,18 @@ export const PlayerPanel = memo(function PlayerPanel({
                 </label>
               </div>
             ) : (
-              <p className="mt-3 text-sm leading-6 text-muted">
-                Movies play directly with the VidLink movie embed endpoint.
-              </p>
+            	<p className="mt-3 text-sm leading-6 text-muted">
+            		Movies play directly with the vidsrcme movie
+            		embed endpoint.
+            	</p>
             )}
 
             <div className="mt-4 text-[10px] leading-4 text-muted opacity-50">
-              Embed source uses the VidLink endpoints with TMDB required.
+            	Embed source uses the vidsrcme.ru endpoints with
+            	TMDB/IMDb required.
             </div>
-          </div>
+            </div>
+
         </div>
       </div>
     </div>

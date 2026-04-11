@@ -59,17 +59,16 @@ export function buildEmbedUrl(
 	season: number,
 	episode: number,
 ) {
-	if (!item.tmdbId) {
+	const id = item.tmdbId || item.imdbId;
+	if (!id) {
 		return "";
 	}
-	const DEFAULT_OPTION =
-		"autoplay=false&primaryColor=63b8bc&secondaryColor=a2a2a2&iconColor=eefdec&icons=default&player=jw&title=true&poster=true&autoplay=false&nextbutton=false";
+
+	const idParam = item.tmdbId ? `tmdb=${item.tmdbId}` : `imdb=${item.imdbId}`;
+
 	if (item.kind === "tv") {
-		return (
-			`https://vidlink.pro/tv/${item.tmdbId}/${season}/${episode}?` +
-			DEFAULT_OPTION
-		);
+		return `https://vidsrcme.ru/embed/tv?${idParam}&season=${season}&episode=${episode}`;
 	}
 
-	return `https://vidlink.pro/movie/${item.tmdbId}?` + DEFAULT_OPTION;
+	return `https://vidsrcme.ru/embed/movie?${idParam}`;
 }
