@@ -1,6 +1,6 @@
 # Living Room Signal (lol-movies)
 
-A TV-first vidsrcme.ru player built with **Astro 6**, **React 19**, and **Tailwind CSS 4**. Optimized for lightweight playback on slower machines or smart TV browsers.
+A TV-first vidfast.pro player built with **Astro 6**, **React 19**, and **Tailwind CSS 4**. Optimized for lightweight playback on slower machines or smart TV browsers.
 
 ## Project Overview
 

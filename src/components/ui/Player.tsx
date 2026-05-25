@@ -99,13 +99,13 @@ export const PlayerPanel = memo(function PlayerPanel({
               </div>
             ) : (
             	<p className="mt-3 text-sm leading-6 text-muted">
-            		Movies play directly with the vidsrcme movie
+            		Movies play directly with the vidfast.pro movie
             		embed endpoint.
             	</p>
             )}
 
             <div className="mt-4 text-[10px] leading-4 text-muted opacity-50">
-            	Embed source uses the vidsrcme.ru endpoints with
+            	Embed source uses the vidfast.pro endpoints with
             	TMDB/IMDb required.
             </div>
             </div>

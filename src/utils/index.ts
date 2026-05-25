@@ -64,11 +64,9 @@ export function buildEmbedUrl(
 		return "";
 	}
 
-	const idParam = item.tmdbId ? `tmdb=${item.tmdbId}` : `imdb=${item.imdbId}`;
-
 	if (item.kind === "tv") {
-		return `https://vidsrcme.ru/embed/tv?${idParam}&season=${season}&episode=${episode}`;
+		return `https://vidfast.pro/tv/${id}/${season}/${episode}`;
 	}
 
-	return `https://vidsrcme.ru/embed/movie?${idParam}`;
+	return `https://vidfast.pro/movie/${id}`;
 }
