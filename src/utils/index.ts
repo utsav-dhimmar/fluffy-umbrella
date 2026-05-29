@@ -1,7 +1,8 @@
 import type { CatalogItem } from "../data/catalog";
-import type { RemotePayload, SearchMode } from "../types";
+import type { RemotePayload, SearchMode, Provider } from "../types";
 import { searchTMDB } from "./fetch-movie";
 export * from "./fetch-movie";
+export * from "./navigation";
 
 export function normalizeText(value: string) {
 	return value
@@ -58,6 +59,7 @@ export function buildEmbedUrl(
 	item: CatalogItem,
 	season: number,
 	episode: number,
+	provider: Provider,
 ) {
 	const id = item.tmdbId || item.imdbId;
 	if (!id) {
@@ -65,8 +67,11 @@ export function buildEmbedUrl(
 	}
 
 	if (item.kind === "tv") {
-		return `https://vidfast.pro/tv/${id}/${season}/${episode}`;
+		return provider.tvUrl
+			.replace("{id}", id.toString())
+			.replace("{s}", season.toString())
+			.replace("{e}", episode.toString());
 	}
 
-	return `https://vidfast.pro/movie/${id}`;
+	return provider.movieUrl.replace("{id}", id.toString());
 }

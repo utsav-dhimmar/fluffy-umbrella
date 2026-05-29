@@ -1,17 +1,20 @@
 import { useDeferredValue, useEffect, useState } from "react";
 import { curatedCatalog, type CatalogItem } from "../data/catalog";
-import type { SearchMode } from "../types";
-import { dedupeCatalog, fetchLatestMatches, normalizeText } from "../utils";
+import { PROVIDERS, DEFAULT_PROVIDER } from "../data/providers";
+import type { SearchMode, Provider } from "../types";
+import { dedupeCatalog, fetchLatestMatches, normalizeText, useDPadNavigation } from "../utils";
 import { PlayerPanel } from "./ui/Player";
 
 const DEFAULT_SELECTION = curatedCatalog[0];
 
 export function CinemaDeck() {
+  useDPadNavigation();
   const [searchMode, setSearchMode] = useState<SearchMode>("tv");
   const [query, setQuery] = useState("");
   const [selected, setSelected] = useState<CatalogItem>(DEFAULT_SELECTION);
   const [season, setSeason] = useState(1);
   const [episode, setEpisode] = useState(1);
+  const [provider, setProvider] = useState<Provider>(DEFAULT_PROVIDER);
   const [remoteResults, setRemoteResults] = useState<CatalogItem[]>([]);
   const [searchState, setSearchState] = useState<
     "idle" | "searching" | "ready" | "error"
@@ -75,6 +78,7 @@ export function CinemaDeck() {
           onSeasonChange={setSeason}
           season={season}
           selected={selected}
+          provider={provider}
         />
 
         <aside className="panel flex flex-col">
@@ -114,6 +118,26 @@ export function CinemaDeck() {
                   {mode}
                 </button>
               ))}
+            </div>
+
+            <div className="space-y-2">
+              <span className="text-xs uppercase tracking-[0.25em] text-muted">
+                Provider
+              </span>
+              <div className="flex flex-wrap gap-2">
+                {PROVIDERS.map((p) => (
+                  <button
+                    className={
+                      p.id === provider.id ? "mode-chip active" : "mode-chip"
+                    }
+                    key={p.id}
+                    onClick={() => setProvider(p)}
+                    type="button"
+                  >
+                    {p.name}
+                  </button>
+                ))}
+              </div>
             </div>
 
             <div className="rounded-lg border border-white/5 bg-black/20 p-3 text-xs leading-5 text-muted">

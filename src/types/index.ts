@@ -10,6 +10,13 @@ export type RemotePayload = {
 };
 export type SearchMode = "all" | MediaKind;
 
+export interface Provider {
+	id: string;
+	name: string;
+	movieUrl: string; // template like "https://.../movie/{id}"
+	tvUrl: string; // template like "https://.../tv/{id}/{s}/{e}"
+}
+
 export interface TMDB_RESPONSE {
 	page: number;
 	results: Result[];

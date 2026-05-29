@@ -55,12 +55,13 @@ body {
   color: var(--text);
   font-family: inherit;
   outline: none;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .search-input:focus,
 .control-input:focus {
   border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-muted);
 }
 
 .mode-chip {
@@ -74,11 +75,18 @@ body {
   letter-spacing: 0.05em;
   cursor: pointer;
   transition: all 0.2s;
+  outline: none;
 }
 
-.mode-chip:hover {
+.mode-chip:hover,
+.mode-chip:focus {
   border-color: var(--muted);
   color: var(--text);
+}
+
+.mode-chip:focus {
+  box-shadow: 0 0 0 2px var(--accent-muted);
+  border-color: var(--accent);
 }
 
 .mode-chip.active {
@@ -95,11 +103,19 @@ body {
   border-radius: 8px;
   text-align: left;
   cursor: pointer;
-  transition: border-color 0.2s;
+  transition: all 0.2s;
+  outline: none;
 }
 
-.result-card:hover {
+.result-card:hover,
+.result-card:focus {
   border-color: var(--muted);
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.result-card:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-muted);
 }
 
 .result-card.active {
