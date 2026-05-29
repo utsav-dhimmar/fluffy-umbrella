@@ -2,8 +2,7 @@ import type { CatalogItem, MediaKind } from "../data/catalog";
 import type { Result, SearchMode, TMDB_RESPONSE } from "../types";
 import { getEnvVar } from "./env";
 
-// TMDB Proxy to bypass regional blocks (e.g., in India)
-const TMDB_BASE_URL = "https://tmdb-proxy.v-media.workers.dev/3";
+const TMDB_BASE_URL = "https://api.themoviedb.org/3";
 
 export async function searchTMDB(
 	query: string,
