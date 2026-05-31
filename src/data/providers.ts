@@ -18,7 +18,17 @@ export const PROVIDERS: Provider[] = [
 		name: "Vidzee",
 		movieUrl: "https://player.vidzee.wtf/embed/movie/{id}",
 		tvUrl: "https://player.vidzee.wtf/embed/tv/{id}/{s}/{e}",
-	},
+  }, {
+    id: "vidnest",
+    name:"Vidnest",
+    movieUrl:"https://vidnest.fun/movie/{id}",
+    tvUrl:"https://vidnest.fun/tv/{id}/{s}/{e}",
+  }, {
+    id: "cinezo",
+    name:"Cinezo",
+    movieUrl:"https://player.cinezo.live/embed/movie/{id}",
+    tvUrl:"https://player.cinezo.live/embed/tv/{id}/{s}/{e}",
+  },
 ];
 
 export const DEFAULT_PROVIDER = PROVIDERS[0];
